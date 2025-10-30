@@ -1,0 +1,102 @@
+@model project.Models.tblStudents
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Sửa thông tin học sinh";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle mb-3">
+        <h2>Sửa thông tin học sinh</h2>
+    </div>
+
+<form asp-action="Edit" method="post" class="border p-4 rounded shadow-sm bg-light">
+    <input type="hidden" asp-for="StudentID" />
+
+    <div class="row">
+        <!-- Cột trái -->
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="FullName">Họ và tên</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Gender">Giới tính</label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="">-- Chọn giới tính --</option>
+                    <option value="Nam">Nam</option>
+                    <option value="Nữ">Nữ</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DateOfBirth">Ngày sinh</label>
+                <input asp-for="DateOfBirth" type="date" class="form-control"
+                       value="@(Model.DateOfBirth.HasValue ? Model.DateOfBirth.Value.ToString("yyyy-MM-dd") : "")" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Phone">Số điện thoại</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- Cột phải -->
+        <div class="col-md-6">
+            <div class="form-group mb-3">
+                <label asp-for="Address">Địa chỉ</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Class">Lớp</label>
+                <input asp-for="Class" class="form-control" />
+                <span asp-validation-for="Class" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Grade">Khối</label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="EnrollmentDate">Ngày nhập học</label>
+                <input asp-for="EnrollmentDate" type="date" class="form-control"
+                       value="@(Model.EnrollmentDate.HasValue ? Model.EnrollmentDate.Value.ToString("yyyy-MM-dd") : "")" />
+                <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Status">Trạng thái</label>
+                <select asp-for="Status" class="form-control">
+                    <option value="">-- Chọn trạng thái --</option>
+                    <option value="Đang học">Đang học</option>
+                    <option value="Tạm nghỉ">Tạm nghỉ</option>
+                    <option value="Đã nghỉ">Đã nghỉ</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn btn-primary me-2">
+            <i class="bi bi-save"></i> Lưu thay đổi
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Quay lại
+        </a>
+    </div>
+</form>
