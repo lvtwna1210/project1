@@ -1,0 +1,38 @@
+@model project.Models.tblStudents
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Xóa học sinh</h2>
+    </div>
+
+    <section class="section">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5>Bạn có chắc chắn muốn xóa học sinh này không?</h5>
+
+                <dl class="row mt-3">
+                    <dt class="col-sm-3">Họ và tên:</dt>
+                    <dd class="col-sm-9">@Model.FullName</dd>
+
+                    <dt class="col-sm-3">Email:</dt>
+                    <dd class="col-sm-9">@Model.Email</dd>
+
+                    <dt class="col-sm-3">Lớp:</dt>
+                    <dd class="col-sm-9">@Model.Class</dd>
+                    
+                </dl>
+
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="StudentID" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Xóa
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
