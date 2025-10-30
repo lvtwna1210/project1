@@ -1,0 +1,103 @@
+@model project.Models.tblTeachers
+@{
+    ViewData["Title"] = "Thêm mới giáo viên";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle mb-3">
+        <h2>Thêm mới giáo viên</h2>
+    </div>
+
+    <div class="card p-4 shadow-sm">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="FullName" class="form-label">Họ và tên</label>
+                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ và tên giáo viên" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Gender" class="form-label">Giới tính</label>
+                    <select asp-for="Gender" class="form-control">
+                        <option value="">-- Chọn giới tính --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Date" class="form-label">Ngày sinh</label>
+                    <input asp-for="Date" type="date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Phone" class="form-label">Số điện thoại</label>
+                    <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="Nhập địa chỉ email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Address" class="form-label">Địa chỉ</label>
+                    <input asp-for="Address" class="form-control" placeholder="Nhập địa chỉ nơi ở" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Position" class="form-label">Chức vụ</label>
+                    <input asp-for="Position" class="form-control" placeholder="Nhập chức vụ" />
+                    <span asp-validation-for="Position" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Subject" class="form-label">Môn giảng dạy</label>
+                    <input asp-for="Subject" class="form-control" placeholder="Nhập môn giảng dạy" />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Qualification" class="form-label">Trình độ chuyên môn</label>
+                    <input asp-for="Qualification" class="form-control" placeholder="Nhập trình độ chuyên môn" />
+                    <span asp-validation-for="Qualification" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="HireDate" class="form-label">Ngày tuyển dụng</label>
+                    <input asp-for="HireDate" type="date" class="form-control" />
+                    <span asp-validation-for="HireDate" class="text-danger"></span>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Status" class="form-label">Trạng thái công tác</label>
+                    <select asp-for="Status" class="form-control">
+                        <option value="">-- Chọn trạng thái --</option>
+                        <option value="Đang công tác">Đang công tác</option>
+                        <option value="Nghỉ phép">Nghỉ phép</option>
+                        <option value="Đã nghỉ việc">Đã nghỉ việc</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="bi bi-save"></i> Lưu lại
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </a>
+            </div>
+        </form>
+    </div>
+</main>
