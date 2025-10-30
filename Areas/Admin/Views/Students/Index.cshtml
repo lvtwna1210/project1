@@ -1,0 +1,83 @@
+@using project.Models
+@model IList<tblStudents>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<main id="main" class="main">
+    <div class="pagetitle">
+        <h2>Danh sách học sinh</h2>
+    </div>
+
+    <section class="section dashboard">
+        <div class="mb-3">
+            <a type="button" class="btn btn-success" asp-area="Admin" asp-controller="Students" asp-action="Create">
+                <i class="bi bi-file-earmark-text me-1"></i> Thêm mới
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card recent-sales overflow-auto">
+                    <div class="card-body mt-4">
+                        <table class="table table-bordered table-striped datatable">
+                            <thead class="table-light">
+                                <tr class="text-center align-middle">
+                                    <th>#</th>
+                                    <th>Họ và tên</th>
+                                    <th>Giới tính</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Lớp học</th>
+                                    <th>Trạng thái</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Any())
+                                {
+                                    int stt = 1;
+                                    foreach (var student in Model)
+                                    {
+                                        <tr class="align-middle text-center">
+                                            <td>@stt</td>
+                                            <td class="text-start">@student.FullName</td>
+                                            <td>@student.Gender</td>
+                                            <td>@(student.DateOfBirth.HasValue ? student.DateOfBirth.Value.ToString("dd/MM/yyyy") : "")</td>
+                                            <td>@student.Phone</td>
+                                            <td>@student.Email</td>
+                                            <td class="text-start">@student.Address</td>
+                                            <td>@student.Class</td>
+                                            <td>@student.Status</td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@student.StudentID" class="btn btn-sm btn-warning">
+                                                    <i class="bi bi-pencil"></i> 
+                                                </a>
+
+                                                <a asp-action="Delete" asp-route-id="@student.StudentID"
+                                                    class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa học sinh này không?')">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        stt++;
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="13" class="text-center text-muted">Không có dữ liệu học sinh.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
